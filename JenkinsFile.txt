@@ -1,3 +1,4 @@
+#!/bin/bash +x
 pipeline {
 	agent any
 
@@ -5,55 +6,33 @@ pipeline {
 
 		stage('Build'){
 			steps {
-				bat '''
-				set +x
-				bat 'mvnw clean install -DskipTests'
-				set -x
-				'''
+				bat "mvnw clean install -DskipTests"
 			}
 		}
 
 		stage('Test'){
 			steps{
-				bat '''
-				set +x
-				bat 'mvnw test'
-				set -x
-				'''
+				bat "mvnw test"
 			}
 		}
 
 		stage('Deploy') {
 			steps {
-				
-			    bat ''' 
-				set +x
-				echo Deployment done
-				set -x
-				'''
+			    bat "echo Deployment done"
 			}
 		}
 	}
 	
 	/*post {
 		success {
-			bat '''
-			set +x
-			|echo "Deployment success"
+			bat 'echo "Deployment success"'
 			bat 'mvnw spring-boot:run'
-			set -x
-			'''
-			
 		}
 		failure {
 			script {
-				
 				bat '''
-				set +x
 				|echo "This job failed"
-				set -x
 				'''.stripMargin().stripIndent()
-				
 			}
 		}
 	}*/
