@@ -5,43 +5,55 @@ pipeline {
 
 		stage('Build'){
 			steps {
+				bat '''
 				set +x
-				bat "mvnw clean install -DskipTests"
+				bat 'mvnw clean install -DskipTests'
 				set -x
+				'''
 			}
 		}
 
 		stage('Test'){
 			steps{
+				bat '''
 				set +x
-				bat "mvnw test"
+				bat 'mvnw test'
 				set -x
+				'''
 			}
 		}
 
 		stage('Deploy') {
 			steps {
+				
+			    bat ''' 
 				set +x
-			    bat "echo Deployment done"
+				echo Deployment done
 				set -x
+				'''
 			}
 		}
 	}
 	
 	/*post {
 		success {
+			bat '''
 			set +x
-			bat 'echo "Deployment success"'
+			|echo "Deployment success"
 			bat 'mvnw spring-boot:run'
 			set -x
+			'''
+			
 		}
 		failure {
 			script {
-				set +x
+				
 				bat '''
+				set +x
 				|echo "This job failed"
-				'''.stripMargin().stripIndent()
 				set -x
+				'''.stripMargin().stripIndent()
+				
 			}
 		}
 	}*/
