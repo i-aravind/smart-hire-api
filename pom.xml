@@ -57,15 +57,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-	<distributionManagement>
-	    <repository>
-	      <uniqueVersion>false</uniqueVersion>
-	      <id>internal</id>
-	      <name>Internal Repository</name>
-	      <url>jar:http://localhost:8082/job/smart-hire-api-build/lastSuccessfulBuild/artifact/target/smarthire-0.0.1-SNAPSHOT</url>
-	      <layout>default</layout>
-	    </repository>
-	</distributionManagement>
 
 </project>

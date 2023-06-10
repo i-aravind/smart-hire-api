@@ -17,7 +17,8 @@ pipeline {
 
 		stage('Deploy') {
 			steps {
-			    bat "mvnw jar:jar deploy:deploy"
+			    bat "cd C:\ProgramData\Jenkins\.jenkins\workspace\smart-hire-api-build\target\"
+				bat "java -jar smarthire-0.0.1-SNAPSHOT.jar"
 			}
 		}
 	}
