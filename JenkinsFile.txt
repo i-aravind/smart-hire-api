@@ -20,8 +20,9 @@ pipeline {
 			    sh "echo Deployment done"
 			}
 		}
-		
-		post {
+	}
+	
+	post {
 		success {
 			sh 'echo "Deployment success"'
 			sh 'mvnw spring-boot:run'
@@ -33,6 +34,5 @@ pipeline {
 				'''.stripMargin().stripIndent()
 			}
 		}
-}
 	}
 }
