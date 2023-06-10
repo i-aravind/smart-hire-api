@@ -17,8 +17,22 @@ pipeline {
 
 		stage('Deploy') {
 			steps {
-			    bat "mvnw spring-boot:run"
+			    sh "echo Deployment done"
 			}
 		}
+		
+		post {
+		success {
+			sh 'echo "Deployment success"'
+			sh 'mvnw spring-boot:run'
+		}
+		failure {
+			script {
+				sh '''
+				|echo "This job failed"
+				'''.stripMargin().stripIndent()
+			}
+		}
+}
 	}
 }
