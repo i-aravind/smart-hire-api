@@ -54,7 +54,7 @@ class TestSmartHireController extends TestUtils{
 		response = this.smartHireController.authenticate(request);
 		LOGGER.info("Candidate autentication : {}",true);
 		assertEquals(1L,response.getCandidateId(),"Candidate Id should be "+1L);
-		assertEquals("Pethaperumal",response.getCandidateName(),"Candidate Name should be "+1L);
+		assertEquals("Pethaperumal",response.getCandidateName(),"Candidate Name should be "+1L_);
 		printTestNameEnd("testAuthenticateByUser");
 	}
 
