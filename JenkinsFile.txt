@@ -22,7 +22,7 @@ pipeline {
 		}
 	}
 	
-	post {
+	/*post {
 		success {
 			bat 'echo "Deployment success"'
 			bat 'mvnw spring-boot:run'
@@ -34,5 +34,5 @@ pipeline {
 				'''.stripMargin().stripIndent()
 			}
 		}
-	}
+	}*/
 }
