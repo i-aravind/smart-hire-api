@@ -17,14 +17,14 @@ pipeline {
 
 		stage('Deploy') {
 			steps {
-			    bat "echo Deployment done"
+			    echo "Deployment done"
 			}
 		}
 	}
 	
 	post {
 		always{
-			emailext to: "jenkins.smarthire@gmail.com",
+			mail to: "jenkins.smarthire@gmail.com",
             subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
             body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
 		}
