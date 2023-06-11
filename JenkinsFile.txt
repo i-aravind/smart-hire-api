@@ -23,19 +23,19 @@ pipeline {
 	}
 	
 	post {
-		success {
+		always{
 			emailext to: "jenkins.smarthire@gmail.com",
-            subject: "Jenkins build success",
-            body: "Jenins build success!!!"
+            subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
+            body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+		}
+		success {
+			
 		}
 		failure {
 			script {
 				bat '''
 				|echo "This job failed"
 				'''.stripMargin().stripIndent()
-				emailext to: "jenkins.smarthire@gmail.com",
-				subject: "Jenkins build failed",
-				body: "Jenins build failed!!!"
 			}
 		}
 	}
