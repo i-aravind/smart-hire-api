@@ -24,8 +24,6 @@ pipeline {
 	
 	post {
 		success {
-			bat 'echo "Deployment success"'
-			bat 'echo Sending mail to jenkins.smarthire@gmail.com'
 			emailext to: "jenkins.smarthire@gmail.com",
             subject: "Jenkins build success",
             body: "Jenins build success!!!"
@@ -35,6 +33,9 @@ pipeline {
 				bat '''
 				|echo "This job failed"
 				'''.stripMargin().stripIndent()
+				emailext to: "jenkins.smarthire@gmail.com",
+				subject: "Jenkins build failed",
+				body: "Jenins build failed!!!"
 			}
 		}
 	}
