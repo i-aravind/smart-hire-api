@@ -17,16 +17,17 @@ pipeline {
 
 		stage('Deploy') {
 			steps {
-			    echo "Deployment done"
+			    echo "Deployment Done"
 			}
 		}
 	}
 	
 	post {
 		always{
+		echo "Sending email to "
 			mail to: "jenkins.smarthire@gmail.com",
-            subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
-            body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+            subject: "${env.JOB_NAME}:#${currentBuild.number}:${currentBuild.currentResult}",
+            body: "#${currentBuild.number}:${currentBuild.currentResult}: Job ${env.JOB_NAME}\nPlease check the logs in the below URL\n ${env.BUILD_URL}"
 		}
 	}
 }
