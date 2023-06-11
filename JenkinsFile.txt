@@ -27,7 +27,7 @@ pipeline {
 			echo "Sending email to : jenkins.smarthire@gmail.com"
 			mail to: "jenkins.smarthire@gmail.com",
             subject: "${env.JOB_NAME} #${currentBuild.number}:${currentBuild.currentResult}",
-            body: "Job Name     : ${env.JOB_NAME}\nBuild Number : #${currentBuild.number}\nBuild Status ${currentBuild.currentResult}\n\nPlease check the logs in the below URL\n ${env.BUILD_URL}"
+            body: "Job Name     : ${env.JOB_NAME}\nBuild Number : #${currentBuild.number}\nBuild Status :${currentBuild.currentResult}\n\nPlease check the logs in the below URL\n ${env.BUILD_URL}"
 		}
 	}
 }
