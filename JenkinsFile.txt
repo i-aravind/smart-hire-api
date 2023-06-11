@@ -22,10 +22,13 @@ pipeline {
 		}
 	}
 	
-	/*post {
+	post {
 		success {
 			bat 'echo "Deployment success"'
-			bat 'mvnw spring-boot:run'
+			bat 'echo Sending mail to jenkins.smarthire@gmail.com'
+			emailext to: "jenkins.smarthire@gmail.com",
+            subject: "Jenkins build success",
+            body: "Jenins build success!!!"
 		}
 		failure {
 			script {
@@ -34,5 +37,5 @@ pipeline {
 				'''.stripMargin().stripIndent()
 			}
 		}
-	}*/
+	}
 }
